@@ -1,0 +1,57 @@
+from tkinter import *
+import random
+
+names = [] 
+
+global questions_answers
+asked=[]
+score=0
+
+
+# Dictionary has key of numbers (for each question number) and : the value for each is a list that has 7 items, so index 0 to 6
+questions_answers  = {
+    1:  ["What must you do when you see blue and red flashing lights behind you?", # item 1, index 0 is the question 
+        'Speed up to get out of the way', # item 2, index 1 will be first choice
+        'Slow down and drive carefully', # item 3, index 2 will be second choice
+        'Slow down and stop', # item 4, index 3 will be third choice
+        'Drive on as usual', # item 5, index 4 will be fourth choice
+         'Slow down and stop', #item 6, index 5 will be the right answer statement
+ 3 ] #item 7, index 6 will be the last item in the list, so no comma after it
+ # we close the list which is the end of the first key value. Then comma to go to the next key
+  
+}
+
+
+class QuizStarter:
+  def __init__(self, parent):
+    background_color="OldLace"
+    #frame set up
+    self.quiz_frame = Frame(parent, bg= background_color, padx=100, pady=100)
+    self.quiz_frame.grid()
+  
+    #label widget for our heading
+    self.heading_label= Label(self.quiz_frame, text="NZ Road Rules", font= ("Tw Cen MT", "18"),bg=background_color)
+    self.heading_label.grid(row=0)
+
+    #Label for user name prompt   
+    self.user_label=Label(self.quiz_frame,text="Please enter your name below",font=("Tw Cen MT", "16" ),bg=background_color)
+    self.user_label.grid(row=1,pady=20)
+
+    #users input is taken by an Entry widget
+    self.entry_box=Entry(self.quiz_frame)
+    self.entry_box.grid(row=2, pady=20)
+    #continue button
+    self.continue_button= Button(self.quiz_frame, text="continue", bg="pink",command= self.name_collection)
+    self.continue_button.grid(row=3,pady=20)
+    def name_collection(self):
+      name=self.entry_box.get()
+      names_list.append(name)
+      print(names_list)
+      self.quiz_frame.destroy()
+#***starting point of program***#
+#this should always start at begenning no space
+if __name__=="__main__":
+  root = Tk()
+  root.title("NZ Road Rules Quiz")
+  quizStarter_object = QuizStarter(root)
+  root.mainloop()#so the window doesnt disappear
